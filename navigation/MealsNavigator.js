@@ -3,7 +3,7 @@ import { createAppContainer } from "react-navigation";
 import { Platform } from "react-native";
 
 import CategoriesScreen from "../screens/CategoriesScreen";
-import CategoryMealsScreen from "../screens/CategoryMealsScreen";
+import CategoryMealScreen from "../screens/CategoryMealsScreen";
 import MealDetailScreen from "../screens/MealDetailScreen";
 import Colors from "../constants/Colors";
 
@@ -16,7 +16,7 @@ const MealsNavigator = createStackNavigator(
             }
         },
         CategoryMeals: {
-            screen: CategoryMealsScreen,
+            screen: CategoryMealScreen,
         },
         MealDetail: MealDetailScreen,
     },

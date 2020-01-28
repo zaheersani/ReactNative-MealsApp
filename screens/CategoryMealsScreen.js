@@ -1,23 +1,31 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES, MEALS } from "../data/dummy-data";
 
-const CategoryMealsScreen = props => {
+import MealItem from "../components/MealItem";
+
+const CategoryMealScreen = props => {
+
+    const renderMealItem = itemData => {
+        return (<MealItem title={itemData.item.title} />);
+    }
+
+    const catId = props.navigation.getParam('categoryId');
+    const displayedMeals = MEALS.filter(meal => meal.categoryIds.indexOf(catId) >= 0);
+
     return (
         <View style={styles.screen}>
-            <Text>CategoryMealsScreen</Text>
-            <Button title="Go to Details" onPress={() => {
-                props.navigation.navigate({
-                    routeName: 'MealDetail'
-                })
-            }} />
+            <FlatList
+                data={displayedMeals}
+                renderItem={renderMealItem}
+            />
         </View>
     );
 }
 
 // NavigationOptions is Function for dynamic data changes
-CategoryMealsScreen.navigationOptions = navigationData => {
+CategoryMealScreen.navigationOptions = navigationData => {
     const catId = navigationData.navigation.getParam('categoryId');
     const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
     return {
@@ -33,4 +41,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default CategoryMealsScreen;
+export default CategoryMealScreen;
