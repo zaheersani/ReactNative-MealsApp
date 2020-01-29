@@ -8,7 +8,14 @@ import MealItem from "../components/MealItem";
 const CategoryMealScreen = props => {
 
     const renderMealItem = itemData => {
-        return (<MealItem title={itemData.item.title} />);
+        return (<MealItem
+            title={itemData.item.title}
+            duration={itemData.item.duration}
+            complexity={itemData.item.complexity}
+            affordability={itemData.item.affordability}
+            image={itemData.item.imageUrl}
+            onSelect={() => { }}
+        />);
     }
 
     const catId = props.navigation.getParam('categoryId');
@@ -17,6 +24,7 @@ const CategoryMealScreen = props => {
     return (
         <View style={styles.screen}>
             <FlatList
+                style={{ width: '100%' }}
                 data={displayedMeals}
                 renderItem={renderMealItem}
             />
@@ -37,7 +45,8 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        padding: 10
     }
 });
 
