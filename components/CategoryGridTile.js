@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         borderRadius: 10,
-        elevation: 3,
+        elevation: 4,
         padding: 10,
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
