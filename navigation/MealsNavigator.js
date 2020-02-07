@@ -125,14 +125,33 @@ const MainNavigator = createDrawerNavigator(
         MealsFavs: {
             screen: MealsFavTabNavigator,
             navigationOptions: {
-                drawerLabel: 'Meals'
+                drawerLabel: 'Meals',
+                drawerIcon: (tabInfo) => {
+                    return <Ionicons
+                        name='ios-restaurant'
+                        size={25}
+                        color={tabInfo.tintColor}
+                    />
+                },
             }
         },
-        Filters: FiltersNavigators
+        Filters: {
+            screen: FiltersNavigators,
+            navigationOptions: {
+                drawerIcon: (tabInfo) => {
+                    return <Ionicons
+                        name='ios-settings'
+                        size={25}
+                        color={tabInfo.tintColor}
+                    />
+                },
+            }
+        }
     },
     {
         contentOptions: {
             activeTintColor: Colors.accentColor,
+            activeColor: Colors.accentColor,
             labelStyle: {
                 fontFamily: 'open-sans-bold'
             }
